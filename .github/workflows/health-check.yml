@@ -5,7 +5,7 @@ on:
     branches: ['main']
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '*/5 * * * *'
   issues:
     types: [opened, closed]
 
@@ -51,8 +51,7 @@ jobs:
         id: metrics
         env:
           SOURCES: |
-            GitHub->https://github.com
-            Facebook->https://facebook.com
+            CivicaScheduling->${{ secrets.SCHEDULING_URL }}
           GITHUB_TOKEN: ${{ github.token }}
           JOB_NAME: ${{ github.workflow }}
           ARTIFACT_NAME: ${{ env.ARTIFACT_NAME }}
